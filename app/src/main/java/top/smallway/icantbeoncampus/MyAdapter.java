@@ -1,9 +1,12 @@
 package top.smallway.icantbeoncampus;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +28,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Person person = personList.get(position);
         holder.title.setText(person.getTitle());
         holder.type.setText(person.getType());
@@ -36,6 +39,20 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             holder.status.setBackgroundResource(R.color.red);
         }
         holder.status.setText(person.getStatus());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 在这里启动二级页面
+                Intent intent = new Intent(v.getContext(), Sign.class);
+                intent.putExtra("id", personList.get(position).getId());
+                intent.putExtra("logId",personList.get(position).getLogId());
+                intent.putExtra("title",personList.get(position).getTitle());
+                intent.putExtra("time",personList.get(position).getTime());
+                intent.putExtra("type",personList.get(position).getType());
+                intent.putExtra("status",personList.get(position).getStatus());
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

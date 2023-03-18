@@ -4,14 +4,12 @@ package top.smallway.icantbeoncampus.net;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import okhttp3.Call;
 import okhttp3.ConnectionPool;
 import okhttp3.FormBody;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class Okhttp {
     private static final Okhttp instance = new Okhttp();
@@ -40,21 +38,7 @@ public class Okhttp {
         return instance;
     }
 
-    public String doGet(String url) throws IOException {
-        Request request = new Request.Builder().url(url).build();
-        Call call = okHttpClient.newCall(request);
-        Response response = call.execute();
-        return response.body().string();
-    }
-
-    public RequestBody doPost(String url) throws IOException {
-        RequestBody requestBody = new FormBody.Builder().add("page", "1")
-                .add("size","5")
-                .build();
-       return requestBody;
-    }
-
-    public Request login_(String url,String username,String password) throws IOException {
+    public Request login_(String url, String username, String password) throws IOException {
 //        定义request Body
         RequestBody requestBody = new FormBody.Builder().add("", "").build();
 

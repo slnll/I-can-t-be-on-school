@@ -54,13 +54,15 @@ public class SignTable extends AppCompatActivity {
                 String start = obj.getString("start");
                 String end = obj.getString("end");
                 String time = start + "至" + end;
+                String id=obj.getString("id");
+                String logId=obj.getString("logId");
                 if (obj.getString("type").equals("1")) {
                     status = "已签到";
                 } else {
                     status = "未签到";
                 }
 
-                数据 = new Person(title, type, time, status);
+                数据 = new Person(title, type, time, status,id,logId);
                 personList.add(数据);
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SignTable.this);
                 recyclerView.setLayoutManager(linearLayoutManager);

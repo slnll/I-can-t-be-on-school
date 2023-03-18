@@ -1,13 +1,15 @@
 package top.smallway.icantbeoncampus;
 
 public class Person {
-    private String title,type,time,status;
+    private String title, type, time, status, id, logId;
 
-    public Person(String title, String type, String time, String status) {
+    public Person(String title, String type, String time, String status,String id, String logId) {
         this.title = title;
         this.type = type;
         this.time = time;
         this.status = status;
+        this.id = id;
+        this.logId = logId;
     }
 
     public void setTitle(String title) {
@@ -26,6 +28,14 @@ public class Person {
         this.status = status;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setLogId(String logId) {
+        this.logId = logId;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -41,4 +51,14 @@ public class Person {
     public String getStatus() {
         return status;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getLogId() {
+        return logId;
+    }
+
+
 }
