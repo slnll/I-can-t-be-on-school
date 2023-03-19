@@ -1,6 +1,8 @@
 package top.smallway.icantbeoncampus;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,9 +26,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import top.smallway.icantbeoncampus.net.Okhttp;
+import top.smallway.icantbeoncampus.net.SSLSocketClient;
 
 public class MainActivity extends AppCompatActivity {
     private EditText username, password;
+    private TextView github,blog;
     private Button login;
     private String url = "https://gw.wozaixiaoyuan.com/basicinfo/mobile/login/username";
     private static Request request;
@@ -91,15 +96,43 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        github.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                jumpUriToBrowser(MainActivity.this,"https://github.com/smallway233/I-can-t-be-on-school");
+            }
+        });
+        blog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                jumpUriToBrowser(MainActivity.this,"https://www.smallway.top/");
+            }
+        });
     }
 
     private void initview() {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         login = findViewById(R.id.login);
+        github=findViewById(R.id.github);
+        blog=findViewById(R.id.blog);
     }
 
-
+    public static void jumpUriToBrowser(Context context, String url) {
+        if (url.startsWith("www."))
+            url = "http://" + url;
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+            Toast.makeText(context, "网址错误", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent();
+        // 设置意图动作为打开浏览器
+        intent.setAction(Intent.ACTION_VIEW);
+        // 声明一个Uri
+        Uri uri = Uri.parse(url);
+        intent.setData(uri);
+        context.startActivity(intent);
+    }
     public  static String get_JWSESSION(){
         return JWSESSION;
     }

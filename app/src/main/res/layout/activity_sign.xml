@@ -69,7 +69,7 @@
         android:layout_marginRight="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="使用当前位置进行签到（正在开发）" />
+        android:text="使用当前位置进行签到" />
 
     <Button
         android:id="@+id/schoolGPS"
@@ -83,13 +83,23 @@
         android:id="@+id/jingdu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="经度" />
     <TextView
         android:id="@+id/weidu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="纬度"/>
+
+    <TextView
+        android:id="@+id/cs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="请注意！！！\n请注意！！！\n请注意！！！\n当上方的经度和纬度显示为数字时才可以进行当前位置签到" />
 
 
 </LinearLayout>

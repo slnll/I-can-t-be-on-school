@@ -10,6 +10,7 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class Okhttp {
     private static final Okhttp instance = new Okhttp();
@@ -37,6 +38,24 @@ public class Okhttp {
     public static Okhttp getInstance() {
         return instance;
     }
+
+
+
+    public String get(String location)throws IOException{
+        OkHttpClient client = new OkHttpClient();
+        String url="https://apis.map.qq.com/ws/geocoder/v1/";
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(url).newBuilder();
+        urlBuilder.addQueryParameter("location", location)
+                .addQueryParameter("key", "QNEBZ-4TKRD-XQQ4L-P3UUT-3RG2Q-URFIO");
+//        转换成String url
+        String Url = urlBuilder.build().toString();
+        Request.Builder builder = new Request.Builder();
+        Request request = builder.get().url(Url).build();
+        Response response = client.newCall(request).execute();
+        return response.body().string();
+    }
+
+
 
     public Request login_(String url, String username, String password) throws IOException {
 //        定义request Body
