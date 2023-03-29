@@ -31,7 +31,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Person person = personList.get(position);
         holder.title.setText(person.getTitle());
-        holder.type.setText(person.getType());
+        if (person.getType().equals("校区签到\n(小tips：签到位置必须在学校)")){
+            holder.type.setText(person.getType());
+            holder.type.setBackgroundResource(R.color.gree);
+        }else {
+            holder.type.setText(person.getType());
+            holder.type.setBackgroundResource(R.color.red);
+        }
+
         holder.time.setText(person.getTime());
         if (person.getStatus().equals("已签到")){
             holder.status.setBackgroundResource(R.color.gree);
@@ -50,6 +57,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                 intent.putExtra("time",personList.get(position).getTime());
                 intent.putExtra("type",personList.get(position).getType());
                 intent.putExtra("status",personList.get(position).getStatus());
+                intent.putExtra("mode",personList.get(position).getMode());
+                intent.putExtra("schoolId",personList.get(position).getSchoolId());
+                intent.putExtra("latitude",personList.get(position).getLatitude());
+                intent.putExtra("longitude",personList.get(position).getLongitude());
                 v.getContext().startActivity(intent);
             }
         });

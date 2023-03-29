@@ -9,97 +9,74 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:gravity="center"
-        android:background="@color/purple_200">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="定位签到"
-        android:textSize="30dp"/>
+        android:background="@color/purple_200"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="定位签到"
+            android:textSize="30dp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <TextView
             android:id="@+id/S_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:textSize="25dp"
-            android:text="title"/>
+            android:text="title"
+            android:textSize="25dp" />
+
         <TextView
             android:id="@+id/S_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="type"/>
+            android:text="type" />
+
         <TextView
             android:id="@+id/S_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="time"/>
+            android:text="time" />
+
         <TextView
             android:id="@+id/S_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="status"/>
+            android:text="status" />
+
         <TextView
             android:id="@+id/id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="id"/>
+            android:text="id" />
 
         <TextView
             android:id="@+id/logid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="logid"
-            android:gravity="center" />
+            android:gravity="center"
+            android:text="logid" />
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/GPS"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="使用当前位置进行签到" />
 
     <Button
         android:id="@+id/schoolGPS"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="使用学校位置进行签到" />
-
-    <TextView
-        android:id="@+id/jingdu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:text="经度" />
-    <TextView
-        android:id="@+id/weidu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:text="纬度"/>
-
-    <TextView
-        android:id="@+id/cs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="请注意！！！\n请注意！！！\n请注意！！！\n当上方的经度和纬度显示为数字时才可以进行当前位置签到" />
 
 
 </LinearLayout>
