@@ -25,6 +25,7 @@ public class Sign extends AppCompatActivity {
     private Button schoolGPS;
     private String url = null;
     private String jwsession = MainActivity.get_JWSESSION();
+    private String message;
     private final Handler mHandler = new Handler(Looper.myLooper()) {
         @Override
         public void dispatchMessage(@NonNull Message msg) {
@@ -83,8 +84,13 @@ public class Sign extends AppCompatActivity {
                             Message message = new Message();
                             String res = Okhttp.getInstance().Areasign(url, V_id, V_schoolId, V_logid, V_latitude, V_longitude, jwsession);
                             JSONObject jsonObject = JSONObject.parseObject(res);
-                            message.what = (int) jsonObject.get("code");
-                            message.obj = jsonObject.get("message");
+                            if (jsonObject.get("code").toString().equals("0")){
+                                message.what=0;
+                                message.obj="签到成功，请勿重复签到！";
+                            }else {
+                                message.what = (int) jsonObject.get("code");
+                                message.obj = jsonObject.get("message");
+                            }
                             mHandler.sendMessage(message);
                         } catch (IOException e) {
                             e.printStackTrace();

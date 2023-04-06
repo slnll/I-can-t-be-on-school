@@ -46,16 +46,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
-            switch (msg.what) {
-                case 0:
-                    Toast.makeText(MainActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+            if (msg.what==0){
+                Toast.makeText(MainActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, SignTable.class);
                     startActivity(intent);
                     finish();
-                    break;
-                case 101:
-                    Toast.makeText(MainActivity.this, String.valueOf(msg.obj), Toast.LENGTH_SHORT).show();
-                    break;
+            }else {
+                Toast.makeText(MainActivity.this, String.valueOf(msg.obj), Toast.LENGTH_SHORT).show();
             }
         }
 

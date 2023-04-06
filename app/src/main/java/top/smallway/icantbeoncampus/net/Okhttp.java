@@ -91,10 +91,15 @@ public class Okhttp {
         String json = "{\r\n    \"inArea\": 1,\r\n    \"areaJSON\": \"{\\\"id\\\":\\\"130001\\\",\\\"name\\\":\\\"陕西国际商贸学院\\\"}\",\r\n    \"latitude\": %s,\r\n    \"longitude\": %s\r\n}";
         String formattedJSON = String.format(json, latitude, longitude);
         RequestBody body = RequestBody.create(mediaType, formattedJSON);
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(url).newBuilder();
+        urlBuilder.addQueryParameter("id", id)
+                .addQueryParameter("schoolId", schoolId)
+                .addQueryParameter("signId",signId);
+        String Url = urlBuilder.build().toString();
         Request request = new Request.Builder()
-                .url("https://gw.wozaixiaoyuan.com/sign/mobile/receive/doSignByArea?id=560924714718085141&schoolId=13&signId=560924714642440192")
+                .url(Url)
                 .method("POST", body)
-                .addHeader("Cookie", "JWSESSION=3530adb152594e91aad926be6987e1a0; JWSESSION=9a3a9e7c66ba48be80e5ba9c644bd168; JWSESSION=9a3a9e7c66ba48be80e5ba9c644bd168")
+                .addHeader("Cookie", "JWSESSION="+jwsession+"; JWSESSION="+jwsession+"; JWSESSION="+jwsession)
                 .addHeader("User-Agent", "Apifox/1.0.0 (https://www.apifox.cn)")
                 .addHeader("Content-Type", "application/json")
                 .addHeader("Accept", "*/*")
