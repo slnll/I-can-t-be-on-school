@@ -3,7 +3,6 @@
     android:id="@+id/sign"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white"
     android:orientation="vertical">
 
 
@@ -82,5 +81,9 @@
             android:text="时间" />
 
     </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/white"/>
 
 </LinearLayout>

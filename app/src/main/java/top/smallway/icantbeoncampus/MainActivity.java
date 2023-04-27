@@ -31,7 +31,7 @@ import top.smallway.icantbeoncampus.net.SSLSocketClient;
 public class MainActivity extends AppCompatActivity {
     private EditText username, password;
     private TextView github,blog;
-    private Button login;
+    private Button login,code;
     private String url = "https://gw.wozaixiaoyuan.com/basicinfo/mobile/login/username";
     private static Request request;
     private static String JWSESSION;
@@ -93,18 +93,29 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+//        登录按钮按下后
+        code.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, restartpassword.class);
+                startActivity(intent);
+            }
+        });
+//        修改密码按钮按下后
         github.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 jumpUriToBrowser(MainActivity.this,"https://github.com/smallway233/I-can-t-be-on-school");
             }
         });
+//        开源地址按下后
         blog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 jumpUriToBrowser(MainActivity.this,"https://www.smallway.top/");
             }
         });
+//        博客地址按下后
     }
 
     private void initview() {
@@ -113,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         login = findViewById(R.id.login);
         github=findViewById(R.id.github);
         blog=findViewById(R.id.blog);
+        code=findViewById(R.id.code);
     }
 
     public static void jumpUriToBrowser(Context context, String url) {

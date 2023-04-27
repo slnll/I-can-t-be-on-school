@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:background="@color/backerground"
     tools:context=".MainActivity">
 
     <EditText
@@ -22,11 +21,25 @@
         android:inputType="textPassword"
         android:hint="密码"
         android:paddingTop="20dp" />
-    <Button
-        android:id="@+id/login"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="登录"/>
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="登录" />
+        <Button
+            android:id="@+id/code"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="忘记密码"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView"

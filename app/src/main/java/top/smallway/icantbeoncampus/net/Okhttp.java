@@ -41,16 +41,10 @@ public class Okhttp {
     }
 
 
-    public String get(String location) throws IOException {
+    public String get(String url) throws IOException {
         OkHttpClient client = new OkHttpClient();
-        String url = "https://apis.map.qq.com/ws/geocoder/v1/";
-        HttpUrl.Builder urlBuilder = HttpUrl.parse(url).newBuilder();
-        urlBuilder.addQueryParameter("location", location)
-                .addQueryParameter("key", "QNEBZ-4TKRD-XQQ4L-P3UUT-3RG2Q-URFIO");
-//        转换成String url
-        String Url = urlBuilder.build().toString();
         Request.Builder builder = new Request.Builder();
-        Request request = builder.get().url(Url).build();
+        Request request = builder.get().url(url).build();
         Response response = client.newCall(request).execute();
         return response.body().string();
     }
@@ -106,6 +100,41 @@ public class Okhttp {
                 .addHeader("Host", "gw.wozaixiaoyuan.com")
                 .addHeader("Connection", "keep-alive")
                 .build();
+        Response response = client.newCall(request).execute();
+        return response.body().string();
+    }
+    public String get_code(String phone_number) throws IOException {
+        String url="https://gw.wozaixiaoyuan.com/basicinfo/mobile/login/getCode";
+        OkHttpClient client = new OkHttpClient();
+        Request.Builder builder = new Request.Builder();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(url).newBuilder();
+        urlBuilder.addQueryParameter("phone", phone_number);
+//        转换成String url
+        String Url = urlBuilder.build().toString();
+        Request request = builder.get().url(Url)
+                .addHeader("User-Agent", "Apifox/1.0.0 (https://www.apifox.cn)")
+                .addHeader("Accept", "*/*")
+                .addHeader("Host", "gw.wozaixiaoyuan.com")
+                .addHeader("Connection", "keep-alive")
+                .build();
+        Response response = client.newCall(request).execute();
+        return response.body().string();
+    }
+    public String change_password(String phone_number,String code,String password) throws IOException{
+//      @param phone_number 手机号
+//      @param code 验证码
+//      @param password 新密码
+
+        String url="https://gw.wozaixiaoyuan.com/basicinfo/mobile/login/changePassword";
+        OkHttpClient client = new OkHttpClient();
+        Request.Builder builder = new Request.Builder();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(url).newBuilder();
+        urlBuilder.addQueryParameter("phone", phone_number)
+                .addQueryParameter("code",code)
+                .addQueryParameter("password",password);
+//        转换成String url
+        String Url = urlBuilder.build().toString();
+        Request request = builder.get().url(Url).build();
         Response response = client.newCall(request).execute();
         return response.body().string();
     }
