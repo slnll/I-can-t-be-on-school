@@ -5,6 +5,17 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    name: CheckScores
+  workflow_dispatch:
+    inputs:
+      force_push_message:
+        description: "是否强制推送信息"
+        required: true
+        default: "False"
+        type: choice
+        options:
+          - "True"
+          - "False"
 
 jobs:
   build:
