@@ -5,24 +5,12 @@ on:
   push:
     tags:
       - '*'
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
-    inputs:
-      force_push_message:
-        description: "是否强制推送信息"
-        required: true
-        default: "False"
-        type: choice
-        options:
-          - "True"
-          - "False"
 
 
 jobs:
   build:
-
+    permissions:
+      contents: write
 
     runs-on: ubuntu-latest
     steps:
