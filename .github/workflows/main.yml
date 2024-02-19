@@ -1,8 +1,8 @@
-name: Android CI
+name: push
 on:
   push:
     tags:
-      - 'v*'
+      - 'v1.0.*'
 jobs:
   build:
     permissions:
