@@ -41,5 +41,5 @@ jobs:
         path: app/build/outputs/apk/debug/app-debug.apk
     - name: echo pyload
       run: |
-          echo 'Artifact ID is ${{steps.artifact-upload-step.outputs.artifact-url}}'
+          echo 'Artifact ID is ${{steps.artifact-upload-step.artifact-url}}'
 
