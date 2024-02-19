@@ -56,3 +56,8 @@ jobs:
         artifacts: app/build/outputs/apk/debug/app-debug.apk
         token: ${{ github.token }}
         generateReleaseNotes: true
+    - name: push rag
+      run: |
+        git tag v1.0.0
+        git push --tags
+
