@@ -20,9 +20,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.artifact-upload-step.outputs.artifact-id }}
     steps:
+    - name: checkout code
     - uses: actions/checkout@v3
     - name: set up JDK 11
       uses: actions/setup-java@v3
