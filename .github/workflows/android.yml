@@ -37,6 +37,7 @@ jobs:
       run: ./gradlew build
     - name: Upload Apk
       uses: actions/upload-artifact@v1
+      id : artifact-upload-step
       with: 
         name: qd-info
         path: app/build/outputs/apk/debug/app-debug.apk
