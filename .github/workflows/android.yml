@@ -40,4 +40,5 @@ jobs:
         name: qd-info
         path: app/build/outputs/apk/debug/app-debug.apk
     - name: echo pyload
-      uses: echo ${{artifact-url}}
+      run: |
+          echo ${{artifact-url}}
