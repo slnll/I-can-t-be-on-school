@@ -52,10 +52,6 @@ jobs:
       run: |
         echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
         echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-url }}'
-    - name: push rag
-      run: |
-        git tag v1.0.0
-        git push --tags
     - name: release
       uses: ncipollo/release-action@v1
       with:
