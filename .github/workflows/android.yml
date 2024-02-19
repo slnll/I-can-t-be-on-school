@@ -50,3 +50,9 @@ jobs:
       run: |
         echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
         echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-url }}'
+    - name: release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "*.apk"
+        token: ${{ github.token }}
+        generateReleaseNotes: true
