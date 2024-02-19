@@ -36,11 +36,12 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: Upload Apk
-      uses: actions/upload-artifact@v1
-      id : artifact-upload-step
-      with: 
-        name: qd-info
+    - uses: actions/upload-artifact@v4
+      id: artifact-upload-step
+      with:
+        name: my-artifact
         path: app/build/outputs/apk/debug/app-debug.apk
+
     - name: Output artifact ID
       run:  echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}'
 
